@@ -27,11 +27,6 @@ function Get-AzureMFAStatus
         [String[]]$UserPrincipalName
     )
 
-    Begin
-    {
-    }
-    Process
-    {
     ForEach ($upn in $UserPrincipalName) {
     $user = Get-MsolUser -UserPrincipalName $upn
         # If MFA has been enabled or enforced, collect the methods and which is default
@@ -62,10 +57,6 @@ function Get-AzureMFAStatus
     Default1 = $userdefault1
     }
     Write-Output $Result
-    }
-    }
-    End
-    {
     }
 }
 
